@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='scp://takuesta@192.168.0.22/www/dev.kaimono-navi.local/app/views/'
+let g:netrw_dirhist_2='scp://takuesta@192.168.0.22/'
+let g:netrw_dirhist_3='scp://takuesta@192.168.0.22/www/'
