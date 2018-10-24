@@ -1,6 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='scp://takuesta@192.168.0.22/www/'
-let g:netrw_dirhist_2='scp://takuesta@192.168.0.22/www/dev.searchprice.net/app/views/mobile/'
-let g:netrw_dirhist_3='scp://takuesta@192.168.0.22/www/dev.searchprice.net/app/views/mobile/list/'
-let g:netrw_dirhist_4='scp://takuesta@192.168.0.22/www/dev.searchprice.net/app/views/mobile/list/partials/'
