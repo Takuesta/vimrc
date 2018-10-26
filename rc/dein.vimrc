@@ -5,11 +5,9 @@ if &compatible
 endif
 
 " Required:
-" set runtimepath^=/Users/Takuya/.vim/dein/repos/github.com/Shougo/dein.vim
 set runtimepath^=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-" call dein#begin(expand('/Users/Takuya/.vim/dein'))
 call dein#begin(expand('~/.vim/dein'))
 
 " Let dein manage dein
@@ -17,13 +15,9 @@ call dein#begin(expand('~/.vim/dein'))
 call dein#add('Shougo/dein.vim')
 
 " Add or remove your plugins here:
-"call dein#add('Shougo/neosnippet.vim')
-"call dein#add('Shougo/neosnippet-snippets')
-call dein#add('tyru/caw.vim.git')
+" call dein#add('tyru/caw.vim.git')
 call dein#add('haya14busa/incsearch.vim')
 call dein#add('thinca/vim-tabrecent')
-"call dein#add('mattn/emmet-vim')
-"call dein#add('sukima/xmledit')
 call dein#add('tomtom/tcomment_vim')
 call dein#add('guns/xterm-color-table.vim')
 
@@ -38,9 +32,9 @@ call dein#end()
 filetype plugin indent on
 
 " If you want to install not installed plugins on startup.
-"if dein#check_install()
-"  call dein#install()
-"endif
+" if dein#check_install()
+"   call dein#install()
+" endif
 
 "End dein Scripts-------------------------
 

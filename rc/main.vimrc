@@ -219,7 +219,7 @@ noremap sf :tabn2<CR>
 noremap sl :tablast<CR>
 noremap so :tabonly<CR>
 " netrw
-autocmd filetype netrw noremap <buffer> ss gt
+" autocmd filetype netrw noremap <buffer> ss gt
 
 nmap sd <C-w>T
 nmap sm :Tabmerge {tabindex} right<Space>
