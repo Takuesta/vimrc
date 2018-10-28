@@ -2,6 +2,10 @@
 " trial
 "
 
+" initialize cursor position when open file.
+" this problem occurs when only centos(all redhat type?).
+autocmd BufReadPost * call cursor(1,1)
+
 " pass yank to rpbcopy
 function! PassToRpbcopy()
     let l:cmd = 'command -v rpbcopy && cat | rpbcopy'
@@ -52,6 +56,5 @@ set keywordprg=:help " Open Vim internal help by K command
 " quit insert mode and curor right
 inoremap <C-c> <C-c><Right>
 inoremap <C-l> <C-c><Right>a
-
 
 
