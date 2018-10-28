@@ -10,7 +10,7 @@ set backspace=2
 set whichwrap=b,s,h,l,<,>,[,]
 set nowrap
 
-set directory^=$HOME/.vim/tmp//
+set directory^=$HOME/.vim/tmp
 
 set encoding=utf-8
 set fileencodings=utf-8,euc-jp,sjis,iso-2022-jp
@@ -87,11 +87,11 @@ autocmd InsertEnter * highlight  CursorLine ctermbg=0
 " Revert Color to default when leaving Insert Mode
 autocmd InsertLeave * highlight  CursorLine ctermbg=232
 " autocmd InsertLeave * highlight  CursorLine ctermbg=53
-augroup CursorLine
-    au!
-    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-    au WinLeave * setlocal nocursorline
-augroup END
+" augroup CursorLine
+"     au!
+"     au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+"     au WinLeave * setlocal nocursorline
+" augroup END
 
 " select color on visual mode
 hi Visual cterm=NONE ctermbg=236
