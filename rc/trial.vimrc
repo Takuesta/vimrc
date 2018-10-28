@@ -1,4 +1,19 @@
-" limit git commit comment width
+"
+" trial
+"
+
+" pass yank to rpbcopy
+function! PassToRpbcopy()
+    " return system("command -v rpbcopy && cat|rpbcopy", @0)
+    let l:cmd    = "command -v rpbcopy && cat | rpbcopy"
+    let l:result = system(l:cmd, @0)
+    if v:shell_error > 0
+        echo "error: maybe rpbcopy command not found."
+    endif
+endfunction
+nnoremap <silent> r :call PassToRpbcopy()<CR>
+
+" limit git commrt comment width
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
 " suppress returning shell
