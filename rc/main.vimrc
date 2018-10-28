@@ -178,7 +178,7 @@ let g:netrw_silent = 1
 
 
 "
-" search
+" search keyword
 "
 " incsearch.vim is necessary.
 map /  <Plug>(incsearch-forward)
@@ -191,7 +191,7 @@ vnoremap * "zy:let @/ = @z<CR>n
 
 
 "
-" split
+" split window
 "
 nnoremap sw <C-w>
 noremap s<Bslash> <C-w><Bar>
