@@ -11,7 +11,7 @@ function! PassToRpbcopy()
         echo "error: maybe rpbcopy command not found."
     endif
 endfunction
-nnoremap <silent> r :call PassToRpbcopy()<CR>
+nnoremap <silent> <Leader>r :call PassToRpbcopy()<CR>
 
 " limit git commrt comment width
 autocmd Filetype gitcommit setlocal spell textwidth=72
