@@ -241,10 +241,10 @@ highlight DiffText cterm=none ctermfg=221 ctermbg=167
 "
 " grep 
 "
-set grepprg=grep\ -rnI\ --color
+set grepprg=grep\ -rniI\ --color
             \\ --exclude-dir={.svn,.git,.cache,.sass-cache}
             \\ --exclude={*.swp*,*.swap*,*.svn*,*.git*,*.tmp*}
-autocmd QuickFixCmdPost *grep* cwindow
+autocmd QuickFixCmdPost *grep* cwindow 
 " set switchbuf+=usetab,newtab
 autocmd FileType qf nnoremap <buffer> <CR> <CR>zz<C-W>p
 autocmd FileType qf nnoremap <buffer> t <CR>zz<C-w>T
