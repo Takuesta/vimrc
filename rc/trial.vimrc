@@ -4,14 +4,16 @@
 
 " pass yank to rpbcopy
 function! PassToRpbcopy()
-    " return system("command -v rpbcopy && cat|rpbcopy", @0)
-    let l:cmd    = "command -v rpbcopy && cat | rpbcopy"
-    let l:result = system(l:cmd, @0)
+    let l:cmd = 'command -v rpbcopy && cat | rpbcopy'
+    call system(l:cmd, @0)
     if v:shell_error > 0
-        echo "error: maybe rpbcopy command not found."
+        echo 'error: maybe rpbcopy command not found.'
+    else
+        echo 'rpbcopy has done.'
     endif
 endfunction
 nnoremap <silent> <Leader>r :call PassToRpbcopy()<CR>
+
 
 " limit git commrt comment width
 autocmd Filetype gitcommit setlocal spell textwidth=72

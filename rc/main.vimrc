@@ -32,11 +32,12 @@ set clipboard=unnamed
 " basic operation
 "
 " ecs
-" to prevent removing indent on empty line & escape paste mode
-inoremap <silent> <Esc> <Left><Esc><Right>:set nopaste<CR>
+" to prevent removing indent on empty line
+inoremap <silent> <Esc> <Left><Esc><Right>
 nnoremap <silent> <Esc><Esc> <Esc>:noh <bar>:set nopaste<CR>
 
 nnoremap <silent> <F2> :set invpaste<CR>
+inoremap <silent> <Leader>p <Esc>:set paste<CR><Esc>i
 
 noremap U <C-r>
 
