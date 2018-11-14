@@ -2,6 +2,12 @@
 " basic setup
 "
 syntax on
+
+" To suppress 'no newline at end of file' for git.
+" It is necessary to locate before 'set expandtab'.
+set noeol
+set binary
+
 set number
 set expandtab
 set tabstop=4
@@ -33,11 +39,12 @@ set clipboard=unnamed
 "
 " ecs
 " to prevent removing indent on empty line
-inoremap <silent> <Esc> <Left><Esc><Right>
+" inoremap <silent> <Esc> <Left><Esc><Right>
+
+" in the case of ONE <Esc>, map is not fine working when file open.
 nnoremap <silent> <Esc><Esc> <Esc>:noh <bar>:set nopaste<CR>
 
 nnoremap <silent> <F2> :set invpaste<CR>
-inoremap <silent> <Leader>p <Esc>:set paste<CR><Esc>i
 
 noremap U <C-r>
 
@@ -50,6 +57,9 @@ map <C-j> <C-e>
 map <C-k> <C-y>
 
 " noremap z zz
+
+" jump one char
+inoremap <C-l> <C-c><Right>a
 
 
 "
@@ -87,13 +97,13 @@ autocmd InsertEnter * highlight  CursorLine ctermbg=0
 " Revert Color to default when leaving Insert Mode
 autocmd InsertLeave * highlight  CursorLine ctermbg=232
 " autocmd InsertLeave * highlight  CursorLine ctermbg=53
-" augroup CursorLine
-"     au!
-"     au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-"     au WinLeave * setlocal nocursorline
-" augroup END
+augroup CursorLine
+    au!
+    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    au WinLeave * setlocal nocursorline
+augroup END
 
-" select color on visual mode
+" select color to visual mode
 hi Visual cterm=NONE ctermbg=236
 
 " to search
@@ -199,8 +209,7 @@ noremap s= <C-w>=
 " adjust width and height
 if bufwinnr(1)
   map + <C-W>+
-  " map - <C-W>-
-  map _ <C-W>-
+  map - <C-W>-
   map <C-Left> <C-W><
   map <C-Right> <C-W>>
 endif
