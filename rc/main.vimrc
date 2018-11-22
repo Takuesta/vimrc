@@ -39,7 +39,7 @@ set clipboard=unnamed
 "
 " ecs
 " to prevent removing indent on empty line
-" inoremap <silent> <Esc> <Left><Esc><Right>
+inoremap <silent> <Esc> <Left><Esc><Right>
 
 " in the case of ONE <Esc>, map is not fine working when file open.
 nnoremap <silent> <Esc><Esc> <Esc>:noh <bar>:set nopaste<CR>
@@ -261,5 +261,4 @@ autocmd FileType qf nnoremap <silent> ]c :cnext<CR><C-W>p
 autocmd FileType qf nnoremap <silent> [c :cprevious<CR><C-W>p
 hi qfFileName ctermfg=127
 hi qfLineNr ctermfg=2
-
 

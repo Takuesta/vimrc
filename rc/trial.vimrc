@@ -9,11 +9,11 @@ nmap <silent> I :set paste<CR>i
 
 " keep curor position when search string
 nmap * *N
-vmap * *<Esc>N
+vmap * y/<C-R>"<CR>N
 
 
 " yank current file path
-nmap <silent> fp :let @" = expand("%:p") . ' +' . line(".")<CR>
+nmap <silent> fp :let @" = expand("%:p") . ' +' . line(".")<CR>:call PassToRpbcopy()<CR>
 
 " pass yank to rpbcopy
 function! PassToRpbcopy()
@@ -25,6 +25,7 @@ function! PassToRpbcopy()
         echo 'rpbcopy has done.'
     endif
 endfunction
+imap <silent> <Leader>r :call PassToRpbcopy()<CR>
 nmap <silent> Y :call PassToRpbcopy()<CR>
 nmap <silent> y y:call PassToRpbcopy()<CR>
 vmap <silent> y y:call PassToRpbcopy()<CR>
