@@ -65,12 +65,14 @@ inoremap <C-l> <C-c><Right>a
 "
 " statusline
 "
+set laststatus=2 
+
 set statusline=
 set statusline+=%{PasteForStatusline()}
 set statusline+=%F
 set statusline+=\ [%l/%L]
 set statusline+=\ %p%%
-set laststatus=2 
+set statusline+=\ %=[%{getcwd()}]
 
 function! PasteForStatusline()
     let paste_status = &paste
@@ -232,9 +234,10 @@ noremap so :tabonly<CR>
 " autocmd filetype netrw noremap <buffer> ss gt
 
 nmap sd <C-w>T
-nmap sm :Tabmerge {tabindex} right<Space>
+" nmap sm :Tabmerge {tabindex} right<Space>
+nmap sm : right <HOME>Tabmerge {i}
 
-nmap tn :tabnew<Space>
+nmap tn :tabnew<CR>
 nmap th :tab help<Space>
 
 
@@ -250,7 +253,7 @@ highlight DiffText cterm=none ctermfg=221 ctermbg=167
 "
 " grep 
 "
-set grepprg=grep\ -rniI\ --color
+set grepprg=grep\ -rnI\ --color
             \\ --exclude-dir={.svn,.git,.cache,.sass-cache}
             \\ --exclude={*.swp*,*.swap*,*.svn*,*.git*,*.tmp*}
 autocmd QuickFixCmdPost *grep* cwindow 
@@ -261,4 +264,3 @@ autocmd FileType qf nnoremap <silent> ]c :cnext<CR><C-W>p
 autocmd FileType qf nnoremap <silent> [c :cprevious<CR><C-W>p
 hi qfFileName ctermfg=127
 hi qfLineNr ctermfg=2
-

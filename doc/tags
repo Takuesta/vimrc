@@ -1,0 +1,16 @@
+<Plug>ChangeCase	change-case.txt	/*<Plug>ChangeCase*
+cC	change-case.txt	/*cC*
+cCC	change-case.txt	/*cCC*
+cCc	change-case.txt	/*cCc*
+change-case	change-case.txt	/*change-case*
+change-case-custom-modifiers	change-case.txt	/*change-case-custom-modifiers*
+change-case-join-tokens	change-case.txt	/*change-case-join-tokens*
+change-case-kebab-case	change-case.txt	/*change-case-kebab-case*
+change-case-snake-case	change-case.txt	/*change-case-snake-case*
+change-case-title-case	change-case.txt	/*change-case-title-case*
+change-case-usage	change-case.txt	/*change-case-usage*
+change-case.txt	change-case.txt	/*change-case.txt*
+g:changecase_guess_case	change-case.txt	/*g:changecase_guess_case*
+g:changecase_lowercase_title_words	change-case.txt	/*g:changecase_lowercase_title_words*
+g:changecase_modifiers	change-case.txt	/*g:changecase_modifiers*
+g:changecase_tokenizers	change-case.txt	/*g:changecase_tokenizers*

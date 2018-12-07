@@ -2,8 +2,30 @@
 " trial
 "
 
-" paste mode for insert mode
-imap <silent> <Leader>f <Esc>:set paste<CR><Esc>i
+autocmd FileType php inoremap <buffer> .. <Space>.<Space>
+
+" open file path
+nmap t <C-W>gF
+nmap tt gF
+nmap to gF
+
+
+" pass oldfiles to current buffer
+command! Oldfiles 
+            \ tabnew ~/.vim/tmp/tmp.oldfiles
+            \ | %d
+            \ | redir @o
+            \ | silent oldfiles
+            \ | redir END
+            \ | silent put! o
+            \ | 1d
+            \ | w
+
+autocmd BufNewFile,BufRead *.{oldfiles} set filetype=oldfiles
+
+
+" paste mode on insert mode
+imap <silent> <Leader><Leader> <Esc>:set paste<CR><Esc>i
 nmap <silent> I :set paste<CR>i
 
 
@@ -25,7 +47,7 @@ function! PassToRpbcopy()
         echo 'rpbcopy has done.'
     endif
 endfunction
-imap <silent> <Leader>r :call PassToRpbcopy()<CR>
+nmap <silent> <Leader>r :call PassToRpbcopy()<CR>
 nmap <silent> Y :call PassToRpbcopy()<CR>
 nmap <silent> y y:call PassToRpbcopy()<CR>
 vmap <silent> y y:call PassToRpbcopy()<CR>
@@ -74,4 +96,3 @@ set keywordprg=:help " Open Vim internal help by K command
 "
 " unnecessary maybe
 "
-
