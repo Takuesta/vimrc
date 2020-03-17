@@ -3,7 +3,7 @@
 "
 syntax on
 
-" To suppress 'no newline at end of file' for git.
+" To suppress 'no newline at end of file' message for git.
 " It is necessary to locate before 'set expandtab'.
 set noeol
 set binary
@@ -41,10 +41,16 @@ set clipboard=unnamed
 " to prevent removing indent on empty line
 inoremap <silent> <Esc> <Left><Esc><Right>
 
-" in the case of ONE <Esc>, map is not fine working when file open.
+" In the case of pressing <Esc> at once, map is not fine working when a file is opened.
 nnoremap <silent> <Esc><Esc> <Esc>:noh <bar>:set nopaste<CR>
 
 nnoremap <silent> <F2> :set invpaste<CR>
+
+" change a paste mode on insert mode
+imap <silent> <Leader><Leader> <Esc>:set paste<CR><Esc>a
+nmap <silent> I :set paste<CR>i
+
+
 
 noremap U <C-r>
 
@@ -68,13 +74,13 @@ inoremap <C-l> <C-c><Right>a
 set laststatus=2 
 
 set statusline=
-set statusline+=%{PasteForStatusline()}
+set statusline+=%{CheckPasteMode()}
 set statusline+=%F
 set statusline+=\ [%l/%L]
 set statusline+=\ %p%%
 set statusline+=\ %=[%{getcwd()}]
 
-function! PasteForStatusline()
+function! CheckPasteMode()
     let paste_status = &paste
     if paste_status == 1
         return " [PASTE MODE] "
@@ -82,6 +88,34 @@ function! PasteForStatusline()
         return ""
     endif
 endfunction
+
+
+" yank a current file path
+nmap <silent> fp :let @" = expand("%:p") . ' +' . line(".")<CR>:call PassToRpbcopy()<CR>
+
+
+" pass a yank to the rpbcopy
+function! PassToRpbcopy()
+    let l:cmd = 'command -v rpbcopy && cat | rpbcopy'
+    call system(l:cmd, @0)
+    if v:shell_error > 0
+        echo 'error: maybe rpbcopy command not found.'
+    else
+        echo 'rpbcopy has done.'
+    endif
+endfunction
+nmap <silent> <Leader>r :call PassToRpbcopy()<CR>
+nmap <silent> Y :call PassToRpbcopy()<CR>
+nmap <silent> y y:call PassToRpbcopy()<CR>
+vmap <silent> y y:call PassToRpbcopy()<CR>
+nmap <silent> yw yw:call PassToRpbcopy()<CR>
+nmap <silent> ye ye:call PassToRpbcopy()<CR>
+nmap <silent> yy yy:call PassToRpbcopy()<CR>
+
+
+" close html tag
+"iabbrev < </<C-X><C-O>
+inoremap <C-k> </<C-X><C-O>
 
 
 "
@@ -108,11 +142,18 @@ augroup END
 " select color to visual mode
 hi Visual cterm=NONE ctermbg=236
 
-" to search
+
+" for search
 set hlsearch
 "hi Search cterm=NONE ctermfg=15 ctermbg=197
 hi Search cterm=NONE ctermfg=15 ctermbg=197
 hi IncSearch cterm=NONE ctermfg=0 ctermbg=255
+
+" keep a curor position when search a string
+nmap * *N
+vmap * y/<C-R>"<CR>N
+
+
 
 " to visible a none visible text
 set list
@@ -128,6 +169,8 @@ hi Type ctermfg=33
 hi phpTodo cterm=bold ctermfg=24 ctermbg=NONE
 hi phpConstant ctermfg=33
 hi phpBoolean ctermfg=33
+" hi phpFunctions ctermfg=166
+hi phpFunctions ctermfg=172
 
 " html
 hi htmlLink cterm=NONE
@@ -229,7 +272,7 @@ noremap sp gT
 noremap st :tabrewind<CR>
 noremap sf :tabn2<CR>
 noremap sl :tablast<CR>
-noremap so :tabonly<CR>
+" noremap so :tabonly<CR>
 " netrw
 " autocmd filetype netrw noremap <buffer> ss gt
 
@@ -254,8 +297,8 @@ highlight DiffText cterm=none ctermfg=221 ctermbg=167
 " grep 
 "
 set grepprg=grep\ -rnI\ --color
-            \\ --exclude-dir={.svn,.git,.cache,.sass-cache}
-            \\ --exclude={*.swp*,*.swap*,*.svn*,*.git*,*.tmp*}
+            \\ --exclude-dir={.svn,.git,.cache,.sass-cache,cache,log,}
+            \\ --exclude={*.swp*,*.swap*,*.svn*,*.git*,*.tmp*,}
 autocmd QuickFixCmdPost *grep* cwindow 
 " set switchbuf+=usetab,newtab
 autocmd FileType qf nnoremap <buffer> <CR> <CR>zz<C-W>p
