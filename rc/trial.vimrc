@@ -2,15 +2,49 @@
 " trial
 "
 
+" cmkt special
+set sw=2
+
+cnoremap <C-a> <C-b>
+cmap <C-b> <Left>
+" cmap <C-S-f> <C-f>
+cmap <C-f> <Right>
+cmap <C-j> <S-Left>
+cmap <C-o> <S-Right>
+
+function! FocusLeftAfterClosingTab()
+    if winnr("$") == 1 && tabpagenr("$") > 1 && tabpagenr() > 1 && tabpagenr() < tabpagenr("$")
+        q | tabprev
+    else
+        q
+    endif
+endfunction
+cmap q<Leader> :call FocusLeftAfterClosingTab()<CR>
+
+set nosplitright
+" set virtualedit=all
+
+cmap f<Leader> function\ 
+cmap c<Leader> class\ 
+cmap w<Leader> '**'<Left><Left>
+
+vmap <silent> sql :!sql-formatter<CR>:call ChangeSqlCase()<CR>
+
+xnoremap p "_dP
+map B "_
+
 autocmd FileType php inoremap <buffer> .. <Space>.<Space>
 
-" open file path
-nmap t <C-W>gF
-nmap tt gF
+
+" open a file path
+" nmap t <C-W>gF
+nmap tt <C-W>gF
 nmap to gF
 
+autocmd BufNewFile,BufRead *.{goto} set filetype=goto
 
-" pass oldfiles to current buffer
+
+" pass oldfiles to a current buffer
 command! Oldfiles 
             \ tabnew ~/.vim/tmp/tmp.oldfiles
             \ | %d
@@ -21,58 +55,18 @@ command! Oldfiles
             \ | 1d
             \ | w
 
-autocmd BufNewFile,BufRead *.{oldfiles} set filetype=oldfiles
+" autocmd BufNewFile,BufRead *.{oldfiles} set filetype=oldfiles
+autocmd BufNewFile,BufRead *.{oldfiles} set filetype=goto
 
 
-" paste mode on insert mode
-imap <silent> <Leader><Leader> <Esc>:set paste<CR><Esc>i
-nmap <silent> I :set paste<CR>i
-
-
-" keep curor position when search string
-nmap * *N
-vmap * y/<C-R>"<CR>N
-
-
-" yank current file path
-nmap <silent> fp :let @" = expand("%:p") . ' +' . line(".")<CR>:call PassToRpbcopy()<CR>
-
-" pass yank to rpbcopy
-function! PassToRpbcopy()
-    let l:cmd = 'command -v rpbcopy && cat | rpbcopy'
-    call system(l:cmd, @0)
-    if v:shell_error > 0
-        echo 'error: maybe rpbcopy command not found.'
-    else
-        echo 'rpbcopy has done.'
-    endif
-endfunction
-nmap <silent> <Leader>r :call PassToRpbcopy()<CR>
-nmap <silent> Y :call PassToRpbcopy()<CR>
-nmap <silent> y y:call PassToRpbcopy()<CR>
-vmap <silent> y y:call PassToRpbcopy()<CR>
-nmap <silent> yw yw:call PassToRpbcopy()<CR>
-nmap <silent> ye ye:call PassToRpbcopy()<CR>
-nmap <silent> yy yy:call PassToRpbcopy()<CR>
-
-
-" limit git commrt comment width
+" limit git comment width
 autocmd Filetype gitcommit setlocal spell textwidth=72
-
-
-" suppress returning shell
-command! -nargs=+ S execute 'silent <args>' | redraw!
 
 
 " autocomplete
 "imap <Leader><Tab> <C-x><C-f>
 inoremap <Leader><Tab> <C-x><C-f>
 inoremap <Tab><Tab> <C-x><C-o>
-
-
-" close html tag
-"iabbrev < </<C-X><C-O>
-inoremap <C-k> </<C-X><C-O>
 
 
 " disable auto comment line
@@ -84,15 +78,13 @@ autocmd FileType html set indentexpr=
 autocmd FileType tpl set indentexpr=
 
 
-cmap <C-j> <Left>
-cmap <C-k> <Right>
-cmap <S-j> <S-Left>
-cmap <S-k> <S-Right>
-
-
-set keywordprg=:help " Open Vim internal help by K command
+" set keywordprg=:help " Open Vim internal help by K command
 
 
 "
 " unnecessary maybe
 "
+
+" suppress returning shell
+command! -nargs=+ S execute 'silent <args>' | redraw!
+

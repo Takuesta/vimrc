@@ -17,9 +17,12 @@ function! ReadFind(...)
     
     execute 'w! ~/.vim/tmp/tmp.readfind'
     execute '1'
-    set filetype=oldfiles
+    
+    " set filetype=oldfiles
+    set filetype=goto
     
 endfunction
 
-autocmd BufNewFile,BufRead *.{readfind} set filetype=oldfiles
+" autocmd BufNewFile,BufRead *.{readfind} set filetype=oldfiles
+autocmd BufNewFile,BufRead *.{readfind} set filetype=goto
 
