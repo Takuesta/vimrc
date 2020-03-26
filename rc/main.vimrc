@@ -2,6 +2,8 @@
 " basic setup
 "
 syntax on
+" colorscheme my_default
+colorscheme default
 
 " To suppress 'no newline at end of file' for git.
 " It is necessary to locate before 'set expandtab'.
@@ -141,8 +143,13 @@ au BufReadPost *.tpl set syntax=html
 " if you want to override markdown configuration, edit .vim/after/syntax/markdown.vim 
 autocmd BufNewFile,BufRead *.{md,txt} set filetype=markdown
 
-" Hin: Show highlight item name under a cursor
-command! Hin echo synIDattr(synID(line("."), col("."), 1), "name")
+" Hin: Show highlight item name under a cursor                                                                
+" command! Hin echo synIDattr(synID(line("."), col("."), 1), "name")
+function! DisplayHighlightInfo()
+    " let l:name = synIDattr(synID(line("."), col("."), 1), "name")
+    execute 'hi' synIDattr(synID(line("."), col("."), 1), "name")
+endfunction
+command! Hi call DisplayHighlightInfo()
 
 
 "
@@ -230,8 +237,8 @@ noremap st :tabrewind<CR>
 noremap sf :tabn2<CR>
 noremap sl :tablast<CR>
 noremap so :tabonly<CR>
-" netrw
-" autocmd filetype netrw noremap <buffer> ss gt
+" netrw (necessary for mac only?)
+autocmd filetype netrw noremap <buffer> ss gt
 
 nmap sd <C-w>T
 " nmap sm :Tabmerge {tabindex} right<Space>
