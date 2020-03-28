@@ -2,7 +2,8 @@
 " basic setup
 "
 syntax on
-colorscheme default
+colorscheme my_default
+" colorscheme default
 
 " To suppress 'no newline at end of file' message for git.
 " It is necessary to locate before 'set expandtab'.
@@ -119,65 +120,25 @@ nmap <silent> yy yy:call PassToRpbcopy()<CR>
 inoremap <C-k> </<C-X><C-O>
 
 
-"
-" highlight
-"
-hi LineNr ctermfg=8 ctermbg=233
-hi MatchParen cterm=none ctermbg=235
 " current line
 set cursorline
-hi CursorLine cterm=NONE ctermbg=232
-" hi CursorLine cterm=NONE ctermbg=53
-"autocmd InsertEnter,InsertLeave * set nocursorline!
-" Change Color when entering Insert Mode
-autocmd InsertEnter * highlight  CursorLine ctermbg=0
-" Revert Color to default when leaving Insert Mode
-autocmd InsertLeave * highlight  CursorLine ctermbg=232
-" autocmd InsertLeave * highlight  CursorLine ctermbg=53
 augroup CursorLine
     au!
     au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
     au WinLeave * setlocal nocursorline
 augroup END
 
-" select color to visual mode
-hi Visual cterm=NONE ctermbg=236
-
-
 " for search
 set hlsearch
-"hi Search cterm=NONE ctermfg=15 ctermbg=197
-hi Search cterm=NONE ctermfg=15 ctermbg=197
-hi IncSearch cterm=NONE ctermfg=0 ctermbg=255
 
-" keep a curor position when search a string
+" keep a curor position after searching a string
 nmap * *N
 vmap * y/<C-R>"<CR>N
-
-
 
 " to visible a none visible text
 set list
 "set listchars=tab:>-,eol:¶
 set listchars=tab:>-
-hi NonText cterm=NONE ctermfg=233
-hi SpecialKey cterm=NONE ctermfg=233
-
-" php
-hi Comment ctermfg=22
-hi Constant ctermfg=161
-hi Type ctermfg=33
-hi phpTodo cterm=bold ctermfg=24 ctermbg=NONE
-hi phpConstant ctermfg=33
-hi phpBoolean ctermfg=33
-" hi phpFunctions ctermfg=166
-hi phpFunctions ctermfg=172
-
-" html
-hi htmlLink cterm=NONE
-
-" sass
-hi sassTodo cterm=bold ctermfg=24 ctermbg=NONE
 
 " tpl
 au BufReadPost *.tpl set syntax=html
@@ -185,7 +146,7 @@ au BufReadPost *.tpl set syntax=html
 " if you want to override markdown configuration, edit .vim/after/syntax/markdown.vim 
 autocmd BufNewFile,BufRead *.{md,txt} set filetype=markdown
 
-" Hin: Show highlight item name under a cursor                                                                
+" Show the highlight name under the cursor                                                                
 " command! Hin echo synIDattr(synID(line("."), col("."), 1), "name")
 function! DisplayHighlightInfo()
     " let l:name = synIDattr(synID(line("."), col("."), 1), "name")
@@ -290,15 +251,10 @@ nmap sm : right <HOME>Tabmerge {i}
 nmap tn :tabnew<CR>
 nmap th :tab help<Space>
 
-
-" diff
+"
+" diff 
+"
 set diffopt=vertical,iwhite 
-
-highlight DiffAdd ctermfg=221 ctermbg=167                                                                                                         
-highlight DiffDelete ctermfg=221 ctermbg=239
-highlight DiffChange ctermfg=221 ctermbg=23
-highlight DiffText cterm=none ctermfg=221 ctermbg=167
-
 
 "
 " grep 
@@ -312,5 +268,3 @@ autocmd FileType qf nnoremap <buffer> <CR> <CR>zz<C-W>p
 autocmd FileType qf nnoremap <buffer> t <CR>zz<C-w>T
 autocmd FileType qf nnoremap <silent> ]c :cnext<CR><C-W>p
 autocmd FileType qf nnoremap <silent> [c :cprevious<CR><C-W>p
-hi qfFileName ctermfg=127
-hi qfLineNr ctermfg=2

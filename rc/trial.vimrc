@@ -2,6 +2,9 @@
 " trial
 "
 
+" suppress being unable to quit (only mac?)
+autocmd FileType netrw setl bufhidden=delete
+
 cnoremap <C-a> <C-b>
 cmap <C-b> <Left>
 " cmap <C-S-f> <C-f>
