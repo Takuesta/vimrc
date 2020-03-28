@@ -241,8 +241,13 @@ noremap sf :tabn2<CR>
 noremap sl :tablast<CR>
 " noremap so :tabonly<CR>
 
-" netrw (necessary for mac only?)
-autocmd filetype netrw noremap <buffer> ss gt
+if has("unix")
+  let s:uname = system("uname -s")
+  if s:uname == "Darwin\n"
+    " Do Mac stuff here
+    autocmd filetype netrw noremap <buffer> ss gt
+  endif
+endif
 
 nmap sd <C-w>T
 " nmap sm :Tabmerge {tabindex} right<Space>
