@@ -5,12 +5,6 @@
 " suppress being unable to quit (only mac?)
 autocmd FileType netrw setl bufhidden=delete
 
-cnoremap <C-a> <C-b>
-cmap <C-b> <Left>
-" cmap <C-S-f> <C-f>
-cmap <C-f> <Right>
-cmap <C-j> <S-Left>
-cmap <C-o> <S-Right>
 
 function! FocusLeftAfterClosingTab()
     if winnr("$") == 1 && tabpagenr("$") > 1 && tabpagenr() > 1 && tabpagenr() < tabpagenr("$")
@@ -35,30 +29,6 @@ map B "_
 
 autocmd FileType php inoremap <buffer> .. <Space>.<Space>
 
-
-" open a file path
-" nmap t <C-W>gF
-nmap tt <C-W>gF
-nmap to gF
-
-autocmd BufNewFile,BufRead *.{goto} set filetype=goto
-
-
-" pass oldfiles to a current buffer
-command! Oldfiles 
-            \ tabnew ~/.vim/tmp/tmp.oldfiles
-            \ | %d
-            \ | redir @o
-            \ | silent oldfiles
-            \ | redir END
-            \ | silent put! o
-            \ | 1d
-            \ | w
-
-" autocmd BufNewFile,BufRead *.{oldfiles} set filetype=oldfiles
-autocmd BufNewFile,BufRead *.{oldfiles} set filetype=goto
-
-
 " limit git comment width
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
@@ -77,8 +47,8 @@ au FileType * set fo-=c fo-=r fo-=o
 autocmd FileType html set indentexpr=
 autocmd FileType tpl set indentexpr=
 
-
-set keywordprg=:help " Open Vim internal help by K command
+" Open Vim internal help by K command
+set keywordprg=:help
 
 
 "
@@ -87,4 +57,11 @@ set keywordprg=:help " Open Vim internal help by K command
 
 " suppress returning shell
 command! -nargs=+ S execute 'silent <args>' | redraw!
+
+" cnoremap <C-a> <C-b>
+" cmap <C-b> <Left>
+" " cmap <C-S-f> <C-f>
+" cmap <C-f> <Right>
+" cmap <C-j> <S-Left>
+" cmap <C-o> <S-Right>
 

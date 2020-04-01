@@ -273,3 +273,27 @@ autocmd FileType qf nnoremap <buffer> <CR> <CR>zz<C-W>p
 autocmd FileType qf nnoremap <buffer> t <CR>zz<C-w>T
 autocmd FileType qf nnoremap <silent> ]c :cnext<CR><C-W>p
 autocmd FileType qf nnoremap <silent> [c :cprevious<CR><C-W>p
+
+"
+" open a file path
+"
+nmap tt <C-W>gF
+nmap to gF
+
+autocmd BufNewFile,BufRead *.{goto} set filetype=goto
+
+"
+" oldfiles
+"
+" pass oldfiles to a new tab buffer
+command! Oldfiles 
+            \ tabnew ~/.vim/tmp/tmp.oldfiles
+            \ | %d
+            \ | redir @o
+            \ | silent oldfiles
+            \ | redir END
+            \ | silent put! o
+            \ | 1d
+            \ | w
+autocmd BufNewFile,BufRead *.{oldfiles} set filetype=goto
+
