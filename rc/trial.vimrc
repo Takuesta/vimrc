@@ -5,6 +5,12 @@
 " suppress being unable to quit (only mac?)
 autocmd FileType netrw setl bufhidden=delete
 
+cnoremap <C-a> <C-b>
+cmap <C-b> <Left>
+" cmap <C-S-f> <C-f>
+cmap <C-f> <Right>
+cmap <C-j> <S-Left>
+cmap <C-o> <S-Right>
 
 function! FocusLeftAfterClosingTab()
     if winnr("$") == 1 && tabpagenr("$") > 1 && tabpagenr() > 1 && tabpagenr() < tabpagenr("$")

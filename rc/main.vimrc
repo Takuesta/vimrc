@@ -266,6 +266,7 @@ set grepprg=grep\ -rnI\ --color
             \\ --exclude-dir={.svn,.git,.cache,.sass-cache,cache,log,}
             \\ --exclude={*.swp*,*.swap*,*.svn*,*.git*,*.tmp*,}
 autocmd QuickFixCmdPost *grep* cwindow 
+
 " set switchbuf+=usetab,newtab
 autocmd FileType qf nnoremap <buffer> <CR> <CR>zz<C-W>p
 autocmd FileType qf nnoremap <buffer> t <CR>zz<C-w>T
