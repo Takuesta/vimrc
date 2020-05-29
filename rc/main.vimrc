@@ -195,7 +195,7 @@ let g:netrw_list_hide='.*\.swp$,^\..*$'
 "let g:bufferline_echo=0
 ":silent Exp
 let g:netrw_silent = 1
-
+let g:netrw_browse_split = 3
 
 "
 " search keyword
