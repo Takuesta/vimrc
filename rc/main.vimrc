@@ -49,10 +49,8 @@ nnoremap <silent> <Esc><Esc> <Esc>:noh <bar>:set nopaste<CR>
 nnoremap <silent> <F2> :set invpaste<CR>
 
 " change a paste mode on insert mode
-imap <silent> <Leader><Leader> <Esc>:set paste<CR><Esc>a
+imap <silent> <Leader><Leader> <Esc>:set paste<CR>a
 nmap <silent> I :set paste<CR>i
-
-
 
 noremap U <C-r>
 
