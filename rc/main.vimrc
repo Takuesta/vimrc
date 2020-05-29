@@ -268,8 +268,32 @@ set grepprg=grep\ -rnI\ --color
             \\ --exclude-dir={.svn,.git,.cache,.sass-cache,cache,log,}
             \\ --exclude={*.swp*,*.swap*,*.svn*,*.git*,*.tmp*,}
 autocmd QuickFixCmdPost *grep* cwindow 
+
 " set switchbuf+=usetab,newtab
 autocmd FileType qf nnoremap <buffer> <CR> <CR>zz<C-W>p
 autocmd FileType qf nnoremap <buffer> t <CR>zz<C-w>T
 autocmd FileType qf nnoremap <silent> ]c :cnext<CR><C-W>p
 autocmd FileType qf nnoremap <silent> [c :cprevious<CR><C-W>p
+
+"
+" open a file path
+"
+nmap tt <C-W>gF
+nmap to gF
+
+autocmd BufNewFile,BufRead *.{goto} set filetype=goto
+
+"
+" oldfiles
+"
+" pass oldfile list to a new tab buffer
+command! Oldfiles 
+            \ tabnew ~/.vim/tmp/tmp.oldfiles
+            \ | %d
+            \ | redir @o
+            \ | silent oldfiles
+            \ | redir END
+            \ | silent put! o
+            \ | 1d
+            \ | w
+autocmd BufNewFile,BufRead *.{oldfiles} set filetype=goto

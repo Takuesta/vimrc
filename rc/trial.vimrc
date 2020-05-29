@@ -36,29 +36,6 @@ map B "_
 autocmd FileType php inoremap <buffer> .. <Space>.<Space>
 
 
-" open a file path
-" nmap t <C-W>gF
-nmap tt <C-W>gF
-nmap to gF
-
-autocmd BufNewFile,BufRead *.{goto} set filetype=goto
-
-
-" pass oldfiles to a current buffer
-command! Oldfiles 
-            \ tabnew ~/.vim/tmp/tmp.oldfiles
-            \ | %d
-            \ | redir @o
-            \ | silent oldfiles
-            \ | redir END
-            \ | silent put! o
-            \ | 1d
-            \ | w
-
-" autocmd BufNewFile,BufRead *.{oldfiles} set filetype=oldfiles
-autocmd BufNewFile,BufRead *.{oldfiles} set filetype=goto
-
-
 " limit git comment width
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
