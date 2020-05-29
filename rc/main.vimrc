@@ -286,7 +286,7 @@ autocmd BufNewFile,BufRead *.{goto} set filetype=goto
 "
 " oldfiles
 "
-" pass oldfile list to a new tab buffer
+" pass oldfiles to a new tab buffer
 command! Oldfiles 
             \ tabnew ~/.vim/tmp/tmp.oldfiles
             \ | %d
@@ -297,3 +297,4 @@ command! Oldfiles
             \ | 1d
             \ | w
 autocmd BufNewFile,BufRead *.{oldfiles} set filetype=goto
+

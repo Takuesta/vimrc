@@ -35,7 +35,6 @@ map B "_
 
 autocmd FileType php inoremap <buffer> .. <Space>.<Space>
 
-
 " limit git comment width
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
@@ -54,8 +53,8 @@ au FileType * set fo-=c fo-=r fo-=o
 autocmd FileType html set indentexpr=
 autocmd FileType tpl set indentexpr=
 
-
-set keywordprg=:help " Open Vim internal help by K command
+" Open Vim internal help by K command
+set keywordprg=:help
 
 
 "
@@ -64,4 +63,11 @@ set keywordprg=:help " Open Vim internal help by K command
 
 " suppress returning shell
 command! -nargs=+ S execute 'silent <args>' | redraw!
+
+" cnoremap <C-a> <C-b>
+" cmap <C-b> <Left>
+" " cmap <C-S-f> <C-f>
+" cmap <C-f> <Right>
+" cmap <C-j> <S-Left>
+" cmap <C-o> <S-Right>
 
