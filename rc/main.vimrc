@@ -188,7 +188,7 @@ inoremap `` `
 " netrw
 "
 let g:netrw_liststyle = 3
-let g:netrw_list_hide='.*\.swp$,^\..*$'
+let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+,\.swp$'
 " suppress 'Press Enter or type command to continue' message
 "set shortmess=a
 "set cmdheight=2
@@ -295,4 +295,3 @@ command! Oldfiles
             \ | 1d
             \ | w
 autocmd BufNewFile,BufRead *.{oldfiles} set filetype=goto
-

@@ -23,6 +23,8 @@ hi LineNr ctermfg=8 ctermbg=233
 
 "
 hi CursorLine cterm=NONE ctermbg=232
+hi CursorLineNR cterm=NONE
+" hi CursorLineNR cterm=NONE ctermfg=208
 " Change a color when entering to Insert Mode
 autocmd InsertEnter * highlight  CursorLine ctermbg=0
 " Revert a color to default when leaving from Insert Mode
